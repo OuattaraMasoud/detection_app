@@ -1,6 +1,8 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:detectionApp/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:detectionApp/models/my_files.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../constants.dart';
 import 'file_info_card.dart';
 
@@ -21,17 +23,32 @@ class MyFiles extends StatelessWidget {
               "My Files",
               style: Theme.of(context).textTheme.titleMedium,
             ),
-            ElevatedButton.icon(
-              style: TextButton.styleFrom(
-                padding: EdgeInsets.symmetric(
-                  horizontal: defaultPadding * 1.5,
-                  vertical:
-                      defaultPadding / (Responsive.isMobile(context) ? 2 : 1),
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: null,
+                padding: EdgeInsets.all(5),
+                side: BorderSide(color: Colors.blue, width: 0.5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
                 ),
+                backgroundColor: Colors.transparent,
               ),
               onPressed: () {},
-              icon: Icon(Icons.add),
-              label: Text("Nouvelle détection"),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.add, size: 14),
+                    SizedBox(width: 5.w),
+                    AutoSizeText(
+                      "Nouvelle détection",
+                      minFontSize: 10,
+                      style: TextStyle(),
+                    ),
+                  ],
+                ),
+              ),
             ),
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:detectionApp/constants.dart';
 import 'package:detectionApp/controllers/menu_app_controller.dart';
 import 'package:detectionApp/features/detection/views/init_detection_page.dart';
 import 'package:detectionApp/features/profile/views/profile_page.dart';
@@ -11,6 +12,7 @@ import 'package:provider/provider.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatefulWidget {
+  static const routeName = 'MainScreen';
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -19,7 +21,6 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    DashboardScreen(),
     InitDetectionPage(),
     ProfilePage(),
     SettingsPage(),
@@ -57,21 +58,21 @@ class _MainScreenState extends State<MainScreen> {
           ? BottomNavigationBar(
               currentIndex: _currentIndex,
               onTap: _onBottomNavTapped,
+              selectedItemColor: primaryColor,
+              unselectedItemColor: Colors.grey.shade800,
+              unselectedIconTheme: IconThemeData(color: Colors.grey.shade800),
+              selectedIconTheme: IconThemeData(color: primaryColor),
               items: [
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset("assets/icons/menu_dashboard.svg"),
-                  label: 'Dashboard',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset("assets/icons/menu_profile.svg"),
+                  icon: Icon(Icons.document_scanner_outlined),
                   label: 'Détection',
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset("assets/icons/menu_profile.svg"),
+                  icon: Icon(Icons.account_circle),
                   label: 'Profil',
                 ),
                 BottomNavigationBarItem(
-                  icon: SvgPicture.asset("assets/icons/menu_setting.svg"),
+                  icon: Icon(Icons.settings),
                   label: 'Paramètres',
                 ),
               ],

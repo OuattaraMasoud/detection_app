@@ -40,7 +40,10 @@ class FileInfoCard extends StatelessWidget {
                   color: info.color ?? Colors.black,
                 ),
               ),
-              Icon(Icons.more_vert, color: Colors.white54)
+              Icon(
+                Icons.more_vert,
+                color: Colors.grey.shade800,
+              )
             ],
           ),
           Text(
@@ -60,14 +63,14 @@ class FileInfoCard extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
-                    .copyWith(color: Colors.white70),
+                    .copyWith(color: Colors.grey.shade900),
               ),
               Text(
                 info.totalStorage!,
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
-                    .copyWith(color: Colors.white),
+                    .copyWith(color: Colors.grey.shade900),
               ),
             ],
           )

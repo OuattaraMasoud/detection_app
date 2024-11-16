@@ -1,6 +1,8 @@
 import 'package:detectionApp/features/dashboard/dashboard_screen.dart';
+import 'package:detectionApp/features/main/main_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'features/auth/views/login.dart';
 import 'features/detection/views/views.dart';
 import 'features/profile/views/views.dart';
 import 'features/settings/views/views.dart';
@@ -36,6 +38,23 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return _getPageRoute(
           routeName: settings.name!,
           viewToShow: const DashboardScreen(),
+          useDefaultPageRoute: true);
+    case ResultPage.routeName:
+      return _getPageRoute(
+          routeName: settings.name!,
+          viewToShow: ResultPage(
+            arguments: settings.arguments as ResultPageArguments,
+          ),
+          useDefaultPageRoute: true);
+    case LoginPage.routeName:
+      return _getPageRoute(
+          routeName: settings.name!,
+          viewToShow: const LoginPage(),
+          useDefaultPageRoute: true);
+    case MainScreen.routeName:
+      return _getPageRoute(
+          routeName: settings.name!,
+          viewToShow: MainScreen(),
           useDefaultPageRoute: true);
 
     default:

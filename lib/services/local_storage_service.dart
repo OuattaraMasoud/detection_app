@@ -10,6 +10,8 @@ class LocalStorageService {
   static SharedPreferences? _preferences;
   static const String themeModeKey = 'themeMode';
   static const String debugModeKey = 'debugModeKey';
+  static const String tokenKey = 'token';
+  static const String userNameKey = 'getUserName';
 
   static const String firstLaunchSetupDoneKey = 'firstLaunchSetupDone';
 
@@ -42,6 +44,12 @@ class LocalStorageService {
   bool get showOnboardingPages => _getFromDisk(showOnboardingPagesKey) ?? true;
   set showOnboardingPages(bool value) =>
       _saveToDisk(showOnboardingPagesKey, value);
+
+  String get userName => _getFromDisk(userNameKey) ?? "";
+  set userName(String value) => _saveToDisk(userNameKey, value);
+
+  String get token => _getFromDisk(tokenKey) ?? "";
+  set token(String value) => _saveToDisk(tokenKey, value);
 
   // Enable Kontact debug mode
   bool get debugMode => _getFromDisk(debugModeKey) ?? false;

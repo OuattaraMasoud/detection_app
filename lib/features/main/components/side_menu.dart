@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../constants.dart';
@@ -16,13 +17,14 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: secondaryColor,
       child: ListView(
         children: [
           DrawerHeader(
             child: Center(
               child: Text(
                 'Detection App',
-                style: TextStyle(color: Colors.white, fontSize: 35),
+                style: TextStyle(fontSize: 35),
               ),
             ),
           ),
@@ -71,20 +73,24 @@ class DrawerListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      onTap: press,
-      horizontalTitleGap: 0.0,
-      leading: SvgPicture.asset(
-        svgSrc,
-        color: isSelected ? primaryColor : Colors.white54,
-        height: 16,
+    return Container(
+      margin: EdgeInsets.all(2),
+      child: ListTile(
+        onTap: press,
+        horizontalTitleGap: 0.0,
+        leading: SvgPicture.asset(
+          svgSrc,
+          color: isSelected ? primaryColor : Colors.grey.shade900,
+          height: 16,
+        ),
+        title: Text(
+          title,
+          style: TextStyle(
+              color: isSelected ? primaryColor : Colors.grey.shade900),
+        ),
+        selected: isSelected,
+        selectedTileColor: Colors.blue.withOpacity(0.1),
       ),
-      title: Text(
-        title,
-        style: TextStyle(color: isSelected ? primaryColor : Colors.white54),
-      ),
-      selected: isSelected,
-      selectedTileColor: bgColor,
     );
   }
 }

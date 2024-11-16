@@ -1,3 +1,6 @@
+import 'package:detectionApp/global_app/global_app.dart';
+import 'package:detectionApp/repositories/repository.dart';
+import 'package:detectionApp/services/dio_service.dart';
 import 'package:detectionApp/services/local_storage_service.dart';
 import 'package:detectionApp/services/navigation_service.dart';
 import 'package:get_it/get_it.dart';
@@ -14,6 +17,6 @@ Future<void> setupLocator() async {
 
   //locator.registerSingleton<AuthRepository>(AuthRepository());
   locator.registerLazySingleton(() => NavigationService());
-
-  //locator.registerSingleton<GlobalAppCubit>(GlobalAppCubit());
+  locator.registerSingleton<DetectionRepository>(
+      DetectionRepository(DioService()));
 }
